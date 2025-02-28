@@ -1,0 +1,66 @@
+﻿# API:
+
+# فایل های تولیدشده توسط Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.userosscache
+*.sln.iml
+
+# فایل های build
+bin/
+obj/
+[Bb]uild/
+[Bb]uildArtifacts/
+
+# پکیج های NuGet
+.nuget/
+*.nupkg
+packages/
+
+# لاگ ها و گزارشات
+*.log
+*.log.*
+logs/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# تنظیمات محیطی
+appsettings.Development.json
+appsettings.Local.json
+*.env
+*.env.local
+
+# فایل های IDE
+.idea/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# فایل های Docker
+docker-compose.override.yml
+.dockerignore
+
+# فایل های موقت
+_ReSharper.*
+*.cache
+*.pidb
+*.ilk
+*.pdb
+*.db
+
+# فایل های تولیدشده در زمان اجرا
+wwwroot/dist/
+wwwroot/css/*.min.css
+wwwroot/js/*.min.js
+
+# فایل های مربوط به توسعه SSL
+.pfx
+*.pfx
+
+# فایل های ویژوال استودیو کد
+.history/
+
+# -----------------------------------------
