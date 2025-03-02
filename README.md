@@ -14,7 +14,7 @@
 |**Name**|**string**|**NO**|
 |**Description**|**string**|**NO**|
 |**LengthInKM**|**double**|**NO**|
-|**WalkImageURI**|**string**|**YES**|
+|**WalkImageUrl**|**string**|**YES**|
 |**RegionId**|**Unique Identifier (GUID)**|**NO**|
 |**DifficultyId**|**Unique Identifier (GUID)**|**NO**|
 
