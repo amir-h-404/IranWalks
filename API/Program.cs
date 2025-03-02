@@ -1,5 +1,8 @@
 ﻿// The entry point of the application:
 
+using API.Data;
+using Microsoft.EntityFrameworkCore;
+
 // Create a builder for the web application:
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,9 @@ builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 // builder.Services.AddOpenApi();
 // خطوط مربوط به AddOpenApi() و MapOpenApi() را حذف کن مگر اینکه از کتابخانه خاصی استفاده می کنی
+// Inject DbContext class:
+builder.Services.AddDbContext<IranWalksDbContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("IranWalksConnectionString")));
 
 // Build the app:
 var app = builder.Build();
