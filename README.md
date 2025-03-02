@@ -6,7 +6,7 @@
 
 ### tables
 
-- `Walks` table:
+- `Walk` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
@@ -18,7 +18,7 @@
 |**RegionId**|**Unique Identifier (GUID)**|**NO**|
 |**DifficultyId**|**Unique Identifier (GUID)**|**NO**|
 
-- `Regions` table:
+- `Region` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
