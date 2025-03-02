@@ -3,10 +3,11 @@
 ## API
 
 1. Create New ASP.NET Core Web API & Domain Models
+2. Create New Controller - Regions Controller and CRUD Operations  Action Methods
 
-### tables
+### Tables
 
-- `Walk` table:
+- `Walks` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
@@ -18,7 +19,7 @@
 |**RegionId**|**Unique Identifier (GUID)**|**NO**|
 |**DifficultyId**|**Unique Identifier (GUID)**|**NO**|
 
-- `Region` table:
+- `Regions` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
@@ -27,7 +28,7 @@
 |**Name**|**string**|**NO**|
 |**RegionImageURI**|**string**|**YES**|
 
-- `Difficulty` table:
+- `Difficulties` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
