@@ -6,7 +6,7 @@
 
 ### tables
 
-- Walks
+- `Walks` table:
 
 |Column Name|Column Type|Nullable|
 |---|---|---|
@@ -17,6 +17,15 @@
 |**WalkImageURI**|**string**|**YES**|
 |**RegionId**|**Unique Identifier (GUID)**|**NO**|
 |**DifficultyId**|**Unique Identifier (GUID)**|**NO**|
+
+- `Regions` table:
+
+|Column Name|Column Type|Nullable|
+|---|---|---|
+|**Id**|**Unique Identifier (GUID)**|**NO**|
+|**Code**|**string**|**NO**|
+|**Name**|**string**|**NO**|
+|**RegionImageURI**|**string**|**YES**|
 
 ## UI
 
