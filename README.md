@@ -27,6 +27,13 @@
 |**Name**|**string**|**NO**|
 |**RegionImageURI**|**string**|**YES**|
 
+- `Difficulty` table:
+
+|Column Name|Column Type|Nullable|
+|---|---|---|
+|**Id**|**Unique Identifier (GUID)**|**NO**|
+|**Name**|**string**|**NO**|
+
 ## UI
 
 coming soon...
