@@ -23,5 +23,12 @@ namespace API.Controllers
             var regions = _dbContext.Regions.ToList();
             return Ok(regions);
         }
+
+        // GET: URL => http://localhost:5089/api/regions/24
+        [HttpGet("{id}")]
+        public IActionResult Get(string Id)
+        {
+            return Ok();
+        }
     }
 }
