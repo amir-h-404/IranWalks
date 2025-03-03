@@ -62,7 +62,7 @@ namespace API.Controllers
 
         // POST: URL => http://localhost:5089/api/regions
         [HttpPost]
-        public IActionResult Create() 
+        public IActionResult Create([FromBody] AddRegionRequestDto addRegionRequestDto) 
         {
             // todo
             return Ok();
