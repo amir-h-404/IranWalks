@@ -40,9 +40,9 @@ namespace API.Controllers
             return Ok(regionDtos);
         }
 
-        // GET: URL => http://localhost:5089/api/regions/id
+        // GET: URL => http://localhost:5089/api/regions/{id}
         [HttpGet]
-        [Route("{id:Guid}")]
+        [Route("{id:guid}")]
         public IActionResult GetById([FromRoute] Guid id)
         {
             // Get Region Domain Model from database:
@@ -86,6 +86,14 @@ namespace API.Controllers
             // Return 201 Created:
             return CreatedAtAction(nameof(GetById), 
                 new { id = regionDto.Id }, regionDto);
+        }
+
+        // PUT: URL => http://localhost:5089/api/regions/{id}
+        [HttpPut]
+        [Route("{id:guid}")]
+        public IActionResult Update([FromRoute] Guid id)
+        {
+            return Ok();
         }
     }
 }
