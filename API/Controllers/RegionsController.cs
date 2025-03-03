@@ -20,8 +20,8 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            // todo: get all regions from the database
-            return Ok();
+            var regions = _dbContext.Regions.ToList();
+            return Ok(regions);
         }
     }
 }
