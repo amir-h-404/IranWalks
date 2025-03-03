@@ -75,9 +75,17 @@ namespace API.Controllers
             // Use Domain Model to create Region:
             _dbContext.Regions.Add(regionDomainModel);
             _dbContext.SaveChanges();
+            // Map Domain Model back to DTO:
+            var regionDto = new RegionDto 
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
             // Return 201 Created:
             return CreatedAtAction(nameof(GetById), 
-                new { id = regionDomainModel.Id }, regionDomainModel);
+                new { id = regionDto.Id }, regionDto);
         }
     }
 }
