@@ -24,12 +24,14 @@ namespace API.Controllers
             return Ok(regions);
         }
 
-        // GET: URL => http://localhost:5089/api/regions/24
+        // GET: URL => http://localhost:5089/api/regions/id
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetById([FromRoute] Guid Id)
+        public IActionResult GetById([FromRoute] Guid id)
         {
-            return Ok();
+            var region = _dbContext.Regions.Find(id);
+            if (region == null) return NotFound();
+            return Ok(region);
         }
     }
 }
