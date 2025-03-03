@@ -20,7 +20,11 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
+            // Get data from database - Domain Model:
             var regions = _dbContext.Regions.ToList();
+            // Map Domain Models to DTOs (Data Transfer Objects):
+            // todo
+            // Return DTOs:
             return Ok(regions);
         }
 
