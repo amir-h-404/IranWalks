@@ -94,7 +94,24 @@ namespace API.Controllers
         public IActionResult Update([FromRoute] Guid id, [FromBody] 
         UpdateRegionRequestDto updateRegionDto)
         {
-            return Ok();
+            // Check if region exists:
+            var regionDomainModel = 
+                _dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            if (regionDomainModel == null) return NotFound();
+            // Map DTO to Domain Model:
+            regionDomainModel.Code = updateRegionDto.Code;
+            regionDomainModel.Name = updateRegionDto.Name;
+            regionDomainModel.RegionImageUrl = updateRegionDto.RegionImageUrl;
+            _dbContext.SaveChanges();
+            // Convert Domain Model to DTO:
+            var regionDto = new RegionDto 
+            { 
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+            return Ok(regionDto);
         }
     }
 }
