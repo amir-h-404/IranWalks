@@ -25,8 +25,9 @@ namespace API.Controllers
         }
 
         // GET: URL => http://localhost:5089/api/regions/24
-        [HttpGet("{id}")]
-        public IActionResult Get(string Id)
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public IActionResult GetById([FromRoute] Guid Id)
         {
             return Ok();
         }
