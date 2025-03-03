@@ -64,7 +64,13 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] AddRegionRequestDto addRegionRequestDto) 
         {
-            // todo
+            // Map DTO to Domain Model:
+            var regionDomainModel = new Region
+            {
+                Code = addRegionRequestDto.Code,
+                Name = addRegionRequestDto.Name,
+                RegionImageUrl = addRegionRequestDto.RegionImageUrl
+            };
             return Ok();
         }
     }
