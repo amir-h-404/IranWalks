@@ -29,7 +29,8 @@ namespace API.Controllers
         [Route("{id:Guid}")]
         public IActionResult GetById([FromRoute] Guid id)
         {
-            var region = _dbContext.Regions.Find(id);
+            // var region = _dbContext.Regions.Find(id);
+            var region = _dbContext.Regions.FirstOrDefault(x => x.Id == id);
             if (region == null) return NotFound();
             return Ok(region);
         }
