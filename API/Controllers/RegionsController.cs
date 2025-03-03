@@ -59,5 +59,13 @@ namespace API.Controllers
             // Return DTO back to client:
             return Ok(regionDto);
         }
+
+        // POST: URL => http://localhost:5089/api/regions
+        [HttpPost]
+        public IActionResult Create() 
+        {
+            // todo
+            return Ok();
+        }
     }
 }
