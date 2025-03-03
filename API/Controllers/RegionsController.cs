@@ -91,7 +91,8 @@ namespace API.Controllers
         // PUT: URL => http://localhost:5089/api/regions/{id}
         [HttpPut]
         [Route("{id:guid}")]
-        public IActionResult Update([FromRoute] Guid id)
+        public IActionResult Update([FromRoute] Guid id, [FromBody] 
+        UpdateRegionRequestDto updateRegionDto)
         {
             return Ok();
         }
