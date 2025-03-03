@@ -1,6 +1,6 @@
 ﻿namespace API.Models.DTO
 {
-    public class UpdateRegionDto
+    public class UpdateRegionRequestDto
     {
 
     }
