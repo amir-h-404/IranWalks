@@ -45,10 +45,19 @@ namespace API.Controllers
         [Route("{id:Guid}")]
         public IActionResult GetById([FromRoute] Guid id)
         {
-            // var region = _dbContext.Regions.Find(id);
-            var region = _dbContext.Regions.FirstOrDefault(x => x.Id == id);
-            if (region == null) return NotFound();
-            return Ok(region);
+            // Get Region Domain Model from database:
+            var regionDomain = _dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            if (regionDomain == null) return NotFound();
+            // Map Region Domain Model to Region DTO:
+            var regionDto = new RegionDto
+            {
+                Id = regionDomain.Id,
+                Code = regionDomain.Code,
+                Name = regionDomain.Name,
+                RegionImageUrl = regionDomain.RegionImageUrl
+            };
+            // Return DTO back to client:
+            return Ok(regionDto);
         }
     }
 }
