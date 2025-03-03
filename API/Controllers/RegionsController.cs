@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Models.Domain;
+using API.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -21,11 +22,22 @@ namespace API.Controllers
         public IActionResult GetAll()
         {
             // Get data from database - Domain Model:
-            var regions = _dbContext.Regions.ToList();
+            var regionsDomain = _dbContext.Regions.ToList();
             // Map Domain Models to DTOs (Data Transfer Objects):
-            // todo
+            List<RegionDto> regionDtos = [];
+            foreach (var regionDomain in regionsDomain)
+            {
+                RegionDto regionDto = new()
+                {
+                    Id = regionDomain.Id,
+                    Code = regionDomain.Code,
+                    Name = regionDomain.Name,
+                    RegionImageUrl = regionDomain.RegionImageUrl
+                };
+                regionDtos.Add(regionDto);
+            }
             // Return DTOs:
-            return Ok(regions);
+            return Ok(regionDtos);
         }
 
         // GET: URL => http://localhost:5089/api/regions/id
