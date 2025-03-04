@@ -64,8 +64,8 @@ namespace API.Controllers
 
         // POST: URL => http://localhost:5089/api/regions
         [HttpPost]
-        public IActionResult Create([FromBody] AddRegionRequestDto 
-            addRegionRequestDto) 
+        public async Task<IActionResult> Create([FromBody] 
+        AddRegionRequestDto addRegionRequestDto) 
         {
             // Map DTO to Domain Model:
             var regionDomainModel = new Region
@@ -75,8 +75,8 @@ namespace API.Controllers
                 RegionImageUrl = addRegionRequestDto.RegionImageUrl
             };
             // Use Domain Model to create Region:
-            _dbContext.Regions.Add(regionDomainModel);
-            _dbContext.SaveChanges();
+            await _dbContext.Regions.AddAsync(regionDomainModel);
+            await _dbContext.SaveChangesAsync();
             // Map Domain Model back to DTO:
             var regionDto = new RegionDto 
             {
