@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories
 {
@@ -14,7 +15,7 @@ namespace API.Repositories
 
         public async Task<List<Region>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Regions.ToListAsync();
         }
     }
 }
