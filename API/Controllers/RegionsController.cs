@@ -119,14 +119,14 @@ namespace API.Controllers
         // DELETE: URL => http://localhost:5089/api/regions/{id}
         [HttpDelete]
         [Route("{id:guid}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var regionDomainModel = _dbContext.Regions
-                .FirstOrDefault(x => x.Id == id);
+            var regionDomainModel = await _dbContext.Regions
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (regionDomainModel == null) return NotFound();
             // Remove Region:
             _dbContext.Regions.Remove(regionDomainModel);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             // Map Domain Model to DTO:
             var regionDto = new RegionDto
             {
