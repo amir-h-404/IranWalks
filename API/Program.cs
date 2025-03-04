@@ -20,7 +20,7 @@ builder.Services.AddDbContext<IranWalksDbContext>(options =>
 options.UseSqlServer(builder.Configuration
 .GetConnectionString("IranWalksConnectionString")));
 // Injects the Region repository with the implementation SQL region repository: 
-builder.Services.AddScoped<IRegionRepository, InMemoryRegionRepository>();
+builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 // Build the app:
 var app = builder.Build();
 
