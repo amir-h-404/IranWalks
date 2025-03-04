@@ -78,8 +78,8 @@ namespace API.Controllers
                 RegionImageUrl = addRegionRequestDto.RegionImageUrl
             };
             // Use Domain Model to create Region:
-            await _dbContext.Regions.AddAsync(regionDomainModel);
-            await _dbContext.SaveChangesAsync();
+            regionDomainModel = await _regionRepo
+                .CreateAsync(regionDomainModel);
             // Map Domain Model back to DTO:
             var regionDto = new RegionDto 
             {

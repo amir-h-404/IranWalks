@@ -13,6 +13,13 @@ namespace API.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task<Region> CreateAsync(Region region)
+        {
+            await _dbContext.Regions.AddAsync(region);
+            await _dbContext.SaveChangesAsync();
+            return region;
+        }
+
         public async Task<List<Region>> GetAllAsync()
         {
             return await _dbContext.Regions.ToListAsync();
