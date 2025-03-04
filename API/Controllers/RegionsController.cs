@@ -113,5 +113,20 @@ namespace API.Controllers
             };
             return Ok(regionDto);
         }
+
+        // DELETE: URL => http://localhost:5089/api/regions/{id}
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            var regionDomainModel = _dbContext.Regions
+                .FirstOrDefault(x => x.Id == id);
+            if (regionDomainModel == null) return NotFound();
+            // Remove Region:
+            _dbContext.Regions.Remove(regionDomainModel);
+            _dbContext.SaveChanges();
+            // ...
+            return Ok();
+        }
     }
 }
