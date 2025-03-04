@@ -27,7 +27,7 @@ namespace API.Controllers
         public async Task<IActionResult> GetAll()
         {
             // Get data from database - Domain Model:
-            var regionsDomain = await _dbContext.Regions.ToListAsync();
+            var regionsDomain = await _regionRepo.GetAllAsync();
             // Map Domain Models to DTOs (Data Transfer Objects):
             List<RegionDto> regionDtos = [];
             foreach (var regionDomain in regionsDomain)
