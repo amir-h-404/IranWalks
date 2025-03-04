@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Models.Domain;
 using API.Models.DTO;
+using API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,10 +13,13 @@ namespace API.Controllers
     public class RegionsController : ControllerBase
     {
         private readonly IranWalksDbContext _dbContext;
+        private readonly IRegionRepository _regionRepo;
 
-        public RegionsController(IranWalksDbContext dbContext)
+        public RegionsController(IranWalksDbContext dbContext, 
+            IRegionRepository regionRepository)
         {
             _dbContext = dbContext;
+            _regionRepo = regionRepository;
         }
 
         // GET: URL => http://localhost:5089/api/regions
