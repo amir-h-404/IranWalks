@@ -125,8 +125,16 @@ namespace API.Controllers
             // Remove Region:
             _dbContext.Regions.Remove(regionDomainModel);
             _dbContext.SaveChanges();
-            // ...
-            return Ok();
+            // Map Domain Model to DTO:
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+            // Return deleted Region back:
+            return Ok(regionDto);
         }
     }
 }
