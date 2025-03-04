@@ -93,18 +93,18 @@ namespace API.Controllers
         // PUT: URL => http://localhost:5089/api/regions/{id}
         [HttpPut]
         [Route("{id:guid}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] 
-        UpdateRegionRequestDto updateRegionDto)
+        public async Task<IActionResult> Update([FromRoute] Guid id, 
+            [FromBody] UpdateRegionRequestDto updateRegionDto)
         {
             // Check if region exists:
-            var regionDomainModel = 
-                _dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            var regionDomainModel = await _dbContext.Regions
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (regionDomainModel == null) return NotFound();
             // Map DTO to Domain Model:
             regionDomainModel.Code = updateRegionDto.Code;
             regionDomainModel.Name = updateRegionDto.Name;
             regionDomainModel.RegionImageUrl = updateRegionDto.RegionImageUrl;
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             // Convert Domain Model to DTO:
             var regionDto = new RegionDto 
             { 
