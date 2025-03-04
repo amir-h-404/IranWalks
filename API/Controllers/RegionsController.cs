@@ -51,8 +51,7 @@ namespace API.Controllers
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             // Get Region Domain Model from database:
-            var regionDomain = await _dbContext.Regions
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var regionDomain = await _regionRepo.GetByIdAsync(id);
             if (regionDomain == null) return NotFound();
             // Map Region Domain Model to Region DTO:
             var regionDto = new RegionDto
