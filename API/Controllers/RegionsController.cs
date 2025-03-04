@@ -44,10 +44,11 @@ namespace API.Controllers
         // GET: URL => http://localhost:5089/api/regions/{id}
         [HttpGet]
         [Route("{id:guid}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             // Get Region Domain Model from database:
-            var regionDomain = _dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            var regionDomain = await _dbContext.Regions
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (regionDomain == null) return NotFound();
             // Map Region Domain Model to Region DTO:
             var regionDto = new RegionDto
