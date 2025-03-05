@@ -67,25 +67,13 @@ namespace API.Controllers
             [FromBody] UpdateRegionRequestDto updateRegionDto)
         {
             // Map DTO to Domain Model:
-            var regionDomainModel = new Region 
-            { 
-                Code = updateRegionDto.Code,
-                Name = updateRegionDto.Name,
-                RegionImageUrl = updateRegionDto.RegionImageUrl
-            };
+            var regionDomainModel = _mapper.Map<Region>(updateRegionDto);
             // Check if region exists:
             regionDomainModel = await _regionRepo
                 .UpdateAsync(id, regionDomainModel);
             if (regionDomainModel == null) return NotFound();
-            // Convert Domain Model to DTO:
-            var regionDto = new RegionDto 
-            { 
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
-            return Ok(regionDto);
+            // Convert Domain Model to DTO and return data:
+            return Ok(_mapper.Map<RegionDto>(regionDomainModel));
         }
 
         // DELETE: URL => http://localhost:5089/api/regions/{id}
