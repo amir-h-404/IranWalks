@@ -49,23 +49,12 @@ namespace API.Controllers
         AddRegionRequestDto addRegionRequestDto) 
         {
             // Map DTO to Domain Model:
-            var regionDomainModel = new Region
-            {
-                Code = addRegionRequestDto.Code,
-                Name = addRegionRequestDto.Name,
-                RegionImageUrl = addRegionRequestDto.RegionImageUrl
-            };
+            var regionDomainModel = _mapper.Map<Region>(addRegionRequestDto);
             // Use Domain Model to create Region:
             regionDomainModel = await _regionRepo
                 .CreateAsync(regionDomainModel);
             // Map Domain Model back to DTO:
-            var regionDto = new RegionDto 
-            {
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
+            var regionDto = _mapper.Map<RegionDto>(regionDomainModel);
             // Return 201 Created:
             return CreatedAtAction(nameof(GetById), 
                 new { id = regionDto.Id }, regionDto);
