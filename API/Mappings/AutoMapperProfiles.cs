@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using API.Models.Domain;
+using API.Models.DTO;
+using AutoMapper;
 
 namespace API.Mappings
 {
@@ -6,7 +8,7 @@ namespace API.Mappings
     {
         public AutoMapperProfiles()
         {
-
+            CreateMap<Region, RegionDto>().ReverseMap();
         }
     }
 }

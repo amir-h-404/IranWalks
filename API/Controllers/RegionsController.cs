@@ -25,23 +25,10 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            // Get data from database - Domain Model:
+            // Get data from database - Domain Models:
             var regionsDomain = await _regionRepo.GetAllAsync();
-            // Map Domain Models to DTOs (Data Transfer Objects):
-            List<RegionDto> regionDtos = [];
-            foreach (var regionDomain in regionsDomain)
-            {
-                RegionDto regionDto = new()
-                {
-                    Id = regionDomain.Id,
-                    Code = regionDomain.Code,
-                    Name = regionDomain.Name,
-                    RegionImageUrl = regionDomain.RegionImageUrl
-                };
-                regionDtos.Add(regionDto);
-            }
-            // Return DTOs:
-            return Ok(regionDtos);
+            // Map Domain Models to DTOs (Data Transfer Objects) and return DTOs:
+            return Ok(_mapper.Map<List<RegionDto>>(regionsDomain));
         }
 
         // GET: URL => http://localhost:5089/api/regions/{id}
