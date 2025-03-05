@@ -5,6 +5,7 @@
 1. Create New ASP.NET Core Web API & Domain Models
 2. Create New Controller - Regions Controller and CRUD Operations  Action Methods
 3. Asynchronous Programming, Repository Pattern and Auto-mapper
+4. Functionality For Walks - Create, Read, Update, Delete For Walks
 
 ### Tables
 
