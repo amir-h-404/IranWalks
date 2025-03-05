@@ -83,16 +83,8 @@ namespace API.Controllers
         {
             var regionDomainModel = await _regionRepo.DeleteAsync(id);
             if (regionDomainModel == null) return NotFound();
-            // Map Domain Model to DTO:
-            var regionDto = new RegionDto
-            {
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
-            // Return deleted Region back:
-            return Ok(regionDto);
+            // Map Domain Model to DTO and return deleted Region back:
+            return Ok(_mapper.Map<RegionDto>(regionDomainModel));
         }
     }
 }
