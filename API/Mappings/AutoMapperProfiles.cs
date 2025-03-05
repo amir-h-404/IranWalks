@@ -6,7 +6,9 @@ namespace API.Mappings
     {
         public AutoMapperProfiles()
         {
-            CreateMap<UserDto, UserDomain>().ReverseMap();
+            CreateMap<UserDto, UserDomain>()
+                .ForMember(x => x.Name, opt => opt.MapFrom(x => x.FullName))
+                .ReverseMap();
         }
     }
 
@@ -18,6 +20,6 @@ namespace API.Mappings
 
     public class UserDomain
     {
-        public string FullName { get; set; }
+        public string Name { get; set; }
     }
 }
