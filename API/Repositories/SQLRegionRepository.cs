@@ -20,6 +20,16 @@ namespace API.Repositories
             return region;
         }
 
+        public async Task<Region?> DeleteAsync(Guid id)
+        {
+            var region = await _dbContext.Regions
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (region == null) return null;
+            _dbContext.Regions.Remove(region);
+            await _dbContext.SaveChangesAsync();
+            return region;
+        }
+
         public async Task<List<Region>> GetAllAsync()
         {
             return await _dbContext.Regions.ToListAsync();
