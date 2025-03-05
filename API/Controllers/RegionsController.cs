@@ -1,9 +1,8 @@
-﻿using API.Data;
-using API.Models.Domain;
+﻿using API.Models.Domain;
 using API.Models.DTO;
 using API.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -12,14 +11,14 @@ namespace API.Controllers
     [ApiController]
     public class RegionsController : ControllerBase
     {
-        private readonly IranWalksDbContext _dbContext;
         private readonly IRegionRepository _regionRepo;
+        private readonly IMapper _mapper;
 
-        public RegionsController(IranWalksDbContext dbContext, 
-            IRegionRepository regionRepository)
+        public RegionsController(IRegionRepository regionRepository, 
+            IMapper mapper)
         {
-            _dbContext = dbContext;
             _regionRepo = regionRepository;
+            _mapper = mapper;
         }
 
         // GET: URL => http://localhost:5089/api/regions

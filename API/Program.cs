@@ -1,6 +1,7 @@
 ﻿// The entry point of the application:
 
 using API.Data;
+using API.Mappings;
 using API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,8 @@ options.UseSqlServer(builder.Configuration
 .GetConnectionString("IranWalksConnectionString")));
 // Injects the Region repository with the implementation SQL region repository: 
 builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+// Injects Auto-mapper:
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 // Build the app:
 var app = builder.Build();
 
