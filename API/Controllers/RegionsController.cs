@@ -51,8 +51,8 @@ namespace API.Controllers
             // Map DTO to Domain Model:
             var regionDomainModel = _mapper.Map<Region>(addRegionRequestDto);
             // Use Domain Model to create Region:
-            regionDomainModel = await _regionRepo
-                .CreateAsync(regionDomainModel);
+            regionDomainModel = await _regionRepo.CreateAsync(regionDomainModel);
+            if (regionDomainModel == null) return Ok("Region exists!");
             // Map Domain Model back to DTO:
             var regionDto = _mapper.Map<RegionDto>(regionDomainModel);
             // Return 201 Created:
