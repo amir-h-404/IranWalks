@@ -39,16 +39,8 @@ namespace API.Controllers
             // Get Region Domain Model from database:
             var regionDomain = await _regionRepo.GetByIdAsync(id);
             if (regionDomain == null) return NotFound();
-            // Map Region Domain Model to Region DTO:
-            var regionDto = new RegionDto
-            {
-                Id = regionDomain.Id,
-                Code = regionDomain.Code,
-                Name = regionDomain.Name,
-                RegionImageUrl = regionDomain.RegionImageUrl
-            };
-            // Return DTO back to client:
-            return Ok(regionDto);
+            // Map Region Domain Model to DTO and return DTO back to client:
+            return Ok(_mapper.Map<RegionDto>(regionDomain));
         }
 
         // POST: URL => http://localhost:5089/api/regions
