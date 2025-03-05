@@ -1,6 +1,8 @@
-﻿namespace API.Mappings
+﻿using AutoMapper;
+
+namespace API.Mappings
 {
-    public class AutoMapperProfiles
+    public class AutoMapperProfiles : Profile
     {
 
     }
