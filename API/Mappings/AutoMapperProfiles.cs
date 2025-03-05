@@ -6,7 +6,7 @@ namespace API.Mappings
     {
         public AutoMapperProfiles()
         {
-            CreateMap<UserDto, UserDomain>();
+            CreateMap<UserDto, UserDomain>().ReverseMap();
         }
     }
 
