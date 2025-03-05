@@ -30,5 +30,17 @@ namespace API.Repositories
             return await _dbContext.Regions
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<Region?> UpdateAsync(Guid id, Region region)
+        {
+            var existingReg = await _dbContext.Regions
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (existingReg == null) return null;
+            existingReg.Code = region.Code;
+            existingReg.Name = region.Name;
+            existingReg.RegionImageUrl = region.RegionImageUrl;
+            await _dbContext.SaveChangesAsync();
+            return existingReg;
+        }
     }
 }

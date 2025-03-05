@@ -99,15 +99,17 @@ namespace API.Controllers
         public async Task<IActionResult> Update([FromRoute] Guid id, 
             [FromBody] UpdateRegionRequestDto updateRegionDto)
         {
-            // Check if region exists:
-            var regionDomainModel = await _dbContext.Regions
-                .FirstOrDefaultAsync(x => x.Id == id);
-            if (regionDomainModel == null) return NotFound();
             // Map DTO to Domain Model:
-            regionDomainModel.Code = updateRegionDto.Code;
-            regionDomainModel.Name = updateRegionDto.Name;
-            regionDomainModel.RegionImageUrl = updateRegionDto.RegionImageUrl;
-            await _dbContext.SaveChangesAsync();
+            var regionDomainModel = new Region 
+            { 
+                Code = updateRegionDto.Code,
+                Name = updateRegionDto.Name,
+                RegionImageUrl = updateRegionDto.RegionImageUrl
+            };
+            // Check if region exists:
+            regionDomainModel = await _regionRepo
+                .UpdateAsync(id, regionDomainModel);
+            if (regionDomainModel == null) return NotFound();
             // Convert Domain Model to DTO:
             var regionDto = new RegionDto 
             { 
